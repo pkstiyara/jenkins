@@ -1,44 +1,92 @@
-pipeline {
-    agent any
+pipeline{
+    agent{
+        label "node"
+    }
+    stages{
+        stage("Start A"){
+            steps{
+                echo "========executing A========"
+            }
+            post{
+                always{
+                    echo "========always========"
+                }
+                success{
+                    echo "========A executed successfully========"
+                }
+                failure{
+                    echo "========A execution failed========"
+                }
+            }
+        }
+    }
+    post{
+        always{
+            echo "========always========"
+        }
+        success{
+            echo "========pipeline executed successfully ========"
+        }
+        failure{
+            echo "========pipeline execution failed========"
+        }
+    }
 
-    stages {
-        stage('Hello') {
-            steps {
-                echo 'Hello World'
+    stage("Test"){
+            steps{
+                echo "========executing Test========"
+            }
+            post{
+                always{
+                    echo "========always========"
+                }
+                success{
+                    echo "========Test executed successfully========"
+                }
+                failure{
+                    echo "========Test execution failed========"
+                }
             }
         }
-        stage('Stage Env') {
-            steps {
-                echo 'Hello World'
-                echo '$BUILD_ID'
+    }
+    post{
+        always{
+            echo "========always========"
+        }
+        success{
+            echo "========pipeline executed successfully ========"
+        }
+        failure{
+            echo "========pipeline execution failed========"
+        }
+    }
+
+    stage("Dev"){
+            steps{
+                echo "========executing Test========"
+            }
+            post{
+                always{
+                    echo "========always========"
+                }
+                success{
+                    echo "========Dev executed successfully========"
+                }
+                failure{
+                    echo "========Dev execution failed========"
+                }
             }
         }
-        
-        stage('Test Env') {
-            steps {
-                sh 'ls'
-            }
+    }
+    post{
+        always{
+            echo "========always========"
         }
-        
-        stage('Dev Env') {
-            steps {
-                sh 'ls'
-            }
+        success{
+            echo "========pipeline executed successfully ========"
         }
-        
-        stage('Continue ?') {
-            steps {
-                sh 'ls'
-            }
+        failure{
+            echo "========pipeline execution failed========"
         }
-        
-        stage('Prod Env') {
-            steps {
-                sh 'ls'
-            }
-        }
-        
-        
-    
     }
 }
