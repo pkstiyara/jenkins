@@ -30,7 +30,7 @@ sudo systemctl status jenkins
 
 # Prompt to quit the status display
 echo "Press 'q' to exit the status display."
-read -n 1 -s -r -p ""
+q
 
 # Display the initialAdminPassword for Jenkins login in bigger font and blue color
 echo -e "\e[34;1mJenkins initialAdminPassword:\e[0m"
@@ -47,12 +47,6 @@ echo -e "\e[32mJenkins is accessible at: http://${public_ip}:${default_port}\e[0
 echo -e "\nJenkins is installed successfully! 🎉"
 echo -e "Enjoy automating your builds and deployments! 🚀"
 
-# Animation: Moving dots
-for i in {1..10}; do
-    echo -ne "."
-    sleep 0.5
-done
 
-echo -e "\n"
 
 
